@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>ConductR Guided Tour</title>
+    
+    <meta name="description" content="A Guided Tour of a Distributed Application." />
+    <meta name="author" content="Christopher Hunt" />
+
+    <link href="css/index.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <link rel="stylesheet" href="code-styles/github.css">
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div class="step">
+        <h1>A Guided Tour of a<br/>Distributed Application	</h1>
+        <p><img src="images/typesafe_conductR_full_color.svg" width="50%" height="50%"></p>
+    </div>
+    
+    <div class="step">
+        <h1>Who am I</h1>
+        <p>Christopher Hunt</p>
+        <p><a href="https://twitter.com/huntchr">@huntchr</a></p>
+        <p><img src="images/typesafe_full_color.svg" width="25%" height="25%"></p>
+    </div>
+
+    <div class="step">
+        <h1><img src="images/typesafe_conductR_color_reverse.svg" width="25%" height="25%"></h1>
+        <p>A Reactive Application Manager that empowers<br/>Operations to deploy and control distributed systems</p>
+    </div>
+    
+    <div class="step">
+        <h1>My Principles</h1>
+        <p><img src="images/principles.png" width="80%" height="80%"></p>
+    </div>
+    
+    <div class="step">
+        <h1>Difficulty Level</h1>
+        <p><img src="images/banner-meter-reading.png" width="60%" height="60%"></p>
+    </div>
+    
+    <div class="step">
+        <h1>The Cast</h1>
+        <ul>
+          <li>Scala</li>
+          <li>Scala Pickling</li>
+          <li>Akka (cluster, streams, http, data-replication)</li>
+          <li>Play (Visualizer)</li>
+        </ul>
+    </div>
+    
+    <div class="step">
+        <h1>Challenges &amp; Solutions</h1>
+        <p>Receive a stream, find a node and stream onto it</p>
+        <p>&#11015;</p>
+        <p>akka-streams, FSM</p>
+    </div>
+    
+    <div class="step">
+        <h1>Challenges &amp; Solutions</h1>
+        <p>Replicating bundles and scaling them</p>
+        <p>&#11015;</p>
+        <p>akka-cluster, akka-data-replication, FSM</p>
+    </div>
+    
+    <div class="step">
+        <h1>Challenges &amp; Solutions</h1>
+        <p>Running akka-cluster based apps</p>
+        <p>&#11015;</p>
+        <p>Orderly startup, FSM</p>
+    </div>
+    
+    <div class="step">
+        <h1>Challenges &amp; Solutions</h1>
+        <p>Consolidated logging</p>
+        <p>&#11015;</p>
+        <p>akka-streams</p>
+    </div>
+    
+    <div class="step">
+        <h1>Challenges &amp; Solutions</h1>
+        <p>Avoid Batching</p>
+        <p>&#11015;</p>
+        <p>Event Driven</p>
+    </div>
+
+    <div class="step">
+        <h1>Challenges &amp; Solutions</h1>
+        <p>Testing</p>
+        <p>&#11015;</p>
+        <p>Visualizer, Docker</p>
+    </div>
+        
+    <div class="step">
+        <h1>Challenges &amp; Solutions</h1>
+        <p>Sharing State</p>
+        <p>&#11015;</p>
+        <p>akka-data-replication</p>
+    </div>
+
+    <div class="step">
+        <h1>Solutions - Data Replication</h1>
+        <p><img src="images/state-types.png" width="90%" height="90%"></p>
+    </div>
+    
+    <div class="step">
+        <h1>Solutions - Data Replication</h1>
+            <pre><code class="scala">
+class ScaleScheduler 
+  extends ReplicatingActor 
+  with BundleInfoState ... {
+  ...
+
+  override def receive: Receive =
+    super.receive.orElse(scheduling).orElse(...)
+        </code></pre>
+    </div>
+    
+    <div class="step">
+        <h1>Learnings</h1>
+        <ul>
+          <li>Convey state or read state when making a decision</li>
+          <li>Test with at least 3 nodes</li>
+          <li>Visualize your cluster</li>
+        </ul>
+    </div>
+    
+    <div class="step" data-z="-1500">
+        <h1>Follow me</h1>
+        <p>
+            <img src="images/blogger-logo-small.png"/>
+            <br/>
+            <a href="http://christopherhunt-software.blogspot.com.au/">
+             christopher hunt software
+            </a>
+        </p>
+        <p>
+            <img src="images/Twitter_logo_blue.png"/>
+            <br/>
+            <a href="https://twitter.com/huntchr">@huntchr</a>
+        </p>
+        <p>
+            <img src="images/octocat.png"/>
+            <br/>
+            <a href="https://github.com/typesafehub">github.com/typesafehub</a>
+        </p>
+    </div>
+</div>
+
+<div class="footer">
+    <img src="images/typesafe_color_reverse.svg" height="30">
+</div>
+
+<script src="js/impress.js"></script>
+<script src="js/highlight.pack.js"></script>
+<script>
+    impress().init();
+    hljs.initHighlightingOnLoad();
+</script>
+
+</body>
+</html>
+
